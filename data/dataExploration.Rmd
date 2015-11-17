@@ -1,0 +1,176 @@
+---
+title: "Exploration of Airline On-Time data, 2003 ~ 2015"
+author: "HanByul Yang"
+date: "November 17, 2015"
+output: html_document
+---
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, packages}
+knitr::opts_chunk$set(comment = NA, echo=FALSE, message = FALSE, 
+                      warnings = FALSE, cache=TRUE, cache.path='cache/',
+                      fig.path='figure/')
+# Loading required libraries
+library(ggplot2)
+library(ggthemes)
+library(dplyr)
+library(reshape2)
+
+theme_set(theme_minimal(20))
+```
+
+```{r load_the_data}
+# Load the data
+df <- read.csv('263748736_92015_430_airline_delay_causes.csv')
+
+# Remove unnecessary column "X" which indicates index.
+drops <- c("X")
+df <- df[, !(names(df) %in% drops)]
+
+names(df)[names(df) == 'X.month'] <- 'month'
+names(df)[names(df) == 'X.arr_delay'] <- 'arr_delay'
+names(df)[names(df) == 'X.carrier_delay'] <- 'carrier_delay'
+```
+
+### Summary of the data set
+```{r summary_of_data_set}
+# Summarize the data set
+dim(df)
+names(df)
+str(df)
+summary(df)
+```
+
+### Data wrangling
+Removing NAs. Formatting "date".
+```{r data_wrangling}
+df$date <- as.Date(paste(df$year, df$month, "01", sep="-"), format="%Y-%m-%d")
+df_no_NAs <- df[complete.cases(df),]
+dim(df)
+summary(df_no_NAs)
+```
+
+```{r make_new_dataFrame}
+df_sum <- df_no_NAs  %>%
+  group_by(date, year) %>%
+  summarise(
+    flights = sum(arr_flights),
+    delayed = sum(arr_del15),
+    cancelled = sum(arr_cancelled),
+    diverted = sum(arr_diverted)
+  )
+```
+Aggregation. Making new data frame.
+
+### numbers over year
+```{r on_time_performance_over_year}
+ggplot(aes(x = date, y = flights), data = df_sum) +
+  geom_line(colour="red") +
+  geom_line(aes(x = date, y=delayed), colour="green") +
+  geom_line(aes(x = date, y=cancelled), colour="blue") +
+  labs(title='',
+       x='date', y='count')
+```
+
+```{r}
+df_percent <- df_sum #data.frame(date=as.Date(character()), on_time=double())
+df_percent$delayed <- df_sum$delayed / df_sum$flights
+df_percent$cancelled <- df_sum$cancelled / df_sum$flights
+df_percent$diverted <- df_sum$diverted / df_sum$flights
+df_percent$on_time <- 1 - df_percent$delayed
+
+drops <- c("flights", "year")
+df_percent <- df_percent[, !(names(df_percent) %in% drops)]
+df_p_long<-melt(df_percent, id.vars="date")
+```
+
+### on-time performance over year
+```{r}
+ggplot(df_p_long, aes(date,value,linetype=variable)) +
+  geom_line()
+```
+
+```{r }
+df_year <- df_no_NAs  %>%
+  group_by(year) %>%
+  summarise(
+    flights = sum(arr_flights),
+    delayed = sum(arr_del15),
+    cancelled = sum(arr_cancelled),
+    diverted = sum(arr_diverted)
+  )
+
+df_year_p <- df_year
+df_year_p$delayed <- df_year$delayed / df_year$flights
+df_year_p$cancelled <- df_year$cancelled / df_year$flights
+df_year_p$diverted <- df_year$diverted / df_year$flights
+df_year_p$on_time <- 1 - df_year_p$delayed
+
+drops <- c("flights")
+df_year_p <- df_year_p[, !(names(df_year_p) %in% drops)]
+df_year_p_long<-melt(df_year_p, id.vars="year")
+```
+
+### on-time performance over year 2
+```{r}
+ggplot(df_year_p_long, aes(year,value,color=variable)) +
+  geom_line() +
+  # geom_point() +
+  theme_economist() +
+  scale_colour_economist()
+```
+
+```{r}
+df_carrier_year <- df_no_NAs %>%
+  group_by(year, carrier_name) %>%
+  summarise(
+    flights = sum(arr_flights),
+    delayed = sum(arr_del15),
+    cancelled = sum(arr_cancelled),
+    diverted = sum(arr_diverted)
+  ) %>%
+  transform(on_time = 1 - delayed/flights)
+
+df_carriers <- df_carrier_year %>%
+  group_by(carrier_name) %>%
+  summarize(flights_avg = mean(flights),
+            flights = sum(flights)) %>%
+  arrange(desc(flights))
+
+# top 3
+top3_carriers <- df_carriers[1:3,]$carrier_name
+top3_carriers
+df_top3_carrier <- subset(df_carrier_year, is.element(carrier_name, top3_carriers))
+```
+
+```{r}
+df_tmp <- df_year_p
+drops <- c("delayed", "cancelled", "diverted")
+df_tmp <- df_tmp[, !(names(df_tmp) %in% drops)]
+
+df_tmp[,"carrier_name"] <- "Average"
+
+df_tmp2 <-df_top3_carrier
+drops <- c("flights", "delayed", "cancelled", "diverted")
+df_tmp2 <- df_tmp2[, !(names(df_tmp2) %in% drops)]
+
+df_final <- rbind(df_tmp2, df_tmp)
+```
+
+### top3 airline and average on-time performance over year
+```{r top3_plus_average}
+ggplot(df_final, aes(year, on_time, color=carrier_name)) +
+  geom_line() +
+  geom_point() +
+  theme_economist()
+#   scale_colour_economist
+```
+
+```{r export_to_csv}
+write.csv(df_final, file="airline_ontime_performace.csv", row.names=FALSE)
+```
+
+## References
+http://stackoverflow.com/questions/20444970/how-to-make-a-date-column-by-year-in-r
+http://stackoverflow.com/questions/4862178/remove-rows-with-nas-in-data-frame
+http://stackoverflow.com/questions/15795071/how-to-add-legend-to-ggplot2-line-chart
+http://www.statmethods.net/management/merging.html
