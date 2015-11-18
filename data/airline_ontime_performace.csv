@@ -1,53 +1,53 @@
 "year","carrier_name","on_time"
-2003,"American Airlines Inc.",81.192849436517
-2003,"Delta Air Lines Inc.",82.3084031590473
-2003,"Southwest Airlines Co.",86.9102057137779
-2004,"American Airlines Inc.",78.7917222581698
-2004,"Delta Air Lines Inc.",77.9037807683694
-2004,"Southwest Airlines Co.",81.2606774609149
-2005,"American Airlines Inc.",78.5635918517628
-2005,"Delta Air Lines Inc.",79.173996129436
-2005,"Southwest Airlines Co.",81.7477997826326
-2006,"American Airlines Inc.",77.3828964398529
-2006,"Delta Air Lines Inc.",78.0369344340685
-2006,"Southwest Airlines Co.",81.2068540489993
-2007,"American Airlines Inc.",71.8976046647745
-2007,"Delta Air Lines Inc.",78.48153666086
-2007,"Southwest Airlines Co.",81.1406904611373
-2008,"American Airlines Inc.",73.048672222562
-2008,"Delta Air Lines Inc.",78.129404710011
-2008,"Southwest Airlines Co.",81.7136452219006
-2009,"American Airlines Inc.",79.2255940478284
-2009,"Delta Air Lines Inc.",79.9190200160278
-2009,"Southwest Airlines Co.",83.9272687449549
-2010,"American Airlines Inc.",81.6793385129852
-2010,"Delta Air Lines Inc.",79.613818808904
-2010,"Southwest Airlines Co.",80.6833693942215
-2011,"American Airlines Inc.",80.6796623428265
-2011,"Delta Air Lines Inc.",83.8814688986264
-2011,"Southwest Airlines Co.",82.5741076751488
-2012,"American Airlines Inc.",79.1036137237729
-2012,"Delta Air Lines Inc.",87.2290986532834
-2012,"Southwest Airlines Co.",84.132972683872
-2013,"American Airlines Inc.",79.760769375208
-2013,"Delta Air Lines Inc.",85.0057641088158
-2013,"Southwest Airlines Co.",77.6295122330866
-2014,"American Airlines Inc.",77.7289068006703
-2014,"Delta Air Lines Inc.",84.6960487271592
-2014,"Southwest Airlines Co.",74.5339182536162
-2015,"American Airlines Inc.",81.0583208398811
-2015,"Delta Air Lines Inc.",85.8007002686087
-2015,"Southwest Airlines Co.",80.5204595387273
-2003,"Average",82.8614879508821
-2004,"Average",80.0626010797739
-2005,"Average",79.4685877017251
-2006,"Average",77.3795205268274
-2007,"Average",75.8025865077638
-2008,"Average",78.2482318088662
-2009,"Average",81.1126309420104
-2010,"Average",81.7850520045475
-2011,"Average",81.7613531415831
-2012,"Average",83.3492270159144
-2013,"Average",80.0725208223402
-2014,"Average",78.6843900402247
-2015,"Average",80.9377044993855
+2003,"American Airlines Inc.",0.81192849436517
+2003,"Delta Air Lines Inc.",0.823084031590473
+2003,"Southwest Airlines Co.",0.869102057137779
+2004,"American Airlines Inc.",0.787917222581698
+2004,"Delta Air Lines Inc.",0.779037807683694
+2004,"Southwest Airlines Co.",0.812606774609149
+2005,"American Airlines Inc.",0.785635918517628
+2005,"Delta Air Lines Inc.",0.79173996129436
+2005,"Southwest Airlines Co.",0.817477997826326
+2006,"American Airlines Inc.",0.773828964398529
+2006,"Delta Air Lines Inc.",0.780369344340685
+2006,"Southwest Airlines Co.",0.812068540489993
+2007,"American Airlines Inc.",0.718976046647746
+2007,"Delta Air Lines Inc.",0.7848153666086
+2007,"Southwest Airlines Co.",0.811406904611373
+2008,"American Airlines Inc.",0.73048672222562
+2008,"Delta Air Lines Inc.",0.78129404710011
+2008,"Southwest Airlines Co.",0.817136452219007
+2009,"American Airlines Inc.",0.792255940478284
+2009,"Delta Air Lines Inc.",0.799190200160278
+2009,"Southwest Airlines Co.",0.839272687449549
+2010,"American Airlines Inc.",0.816793385129852
+2010,"Delta Air Lines Inc.",0.79613818808904
+2010,"Southwest Airlines Co.",0.806833693942215
+2011,"American Airlines Inc.",0.806796623428265
+2011,"Delta Air Lines Inc.",0.838814688986264
+2011,"Southwest Airlines Co.",0.825741076751488
+2012,"American Airlines Inc.",0.791036137237729
+2012,"Delta Air Lines Inc.",0.872290986532834
+2012,"Southwest Airlines Co.",0.84132972683872
+2013,"American Airlines Inc.",0.79760769375208
+2013,"Delta Air Lines Inc.",0.850057641088158
+2013,"Southwest Airlines Co.",0.776295122330866
+2014,"American Airlines Inc.",0.777289068006703
+2014,"Delta Air Lines Inc.",0.846960487271591
+2014,"Southwest Airlines Co.",0.745339182536162
+2015,"American Airlines Inc.",0.810583208398811
+2015,"Delta Air Lines Inc.",0.858007002686087
+2015,"Southwest Airlines Co.",0.805204595387273
+2003,"Average",0.828614879508821
+2004,"Average",0.800626010797739
+2005,"Average",0.794685877017251
+2006,"Average",0.773795205268274
+2007,"Average",0.758025865077638
+2008,"Average",0.782482318088662
+2009,"Average",0.811126309420104
+2010,"Average",0.817850520045475
+2011,"Average",0.817613531415831
+2012,"Average",0.833492270159144
+2013,"Average",0.800725208223402
+2014,"Average",0.786843900402247
+2015,"Average",0.809377044993855
