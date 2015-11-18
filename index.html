@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>D3 Test</title>
-        <script src="js/d3.min.js"></script>
-        <script src="js/dimple.v2.1.6.min.js"></script>
-        <script type="text/javascript">
-          function draw(data) {
-          
-          /*
-            D3.js setup code
-          */
+  <head>
+    <meta charset="utf-8">
+    <title>Make Effective Data Visualization</title>
 
-              "use strict";
-              var margin = 75,
-                  width = 1400 - margin,
-                  height = 600 - margin;
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-              var svg = d3.select("body")
-                .append("svg")
-                  .attr("width", width + margin)
-                  .attr("height", height + margin)
-                .append('g')
-                    .attr('class','chart');
+    <script src="js/d3.min.js"></script>
+    <script src="js/dimple.v2.1.6.min.js"></script>
 
-          /*
-            Dimple.js Chart construction code
-          */
+    <script type="text/javascript">
+      function draw(data) {
 
-              var myChart = new dimple.chart(svg, data);
-              var x = myChart.addTimeAxis("x", "year", "%Y", "%Y"); 
-              myChart.addMeasureAxis("y", "on_time");
-              myChart.addSeries("carrier_name", dimple.plot.line);
-              myChart.draw();
-            };
-          </script>
-    </head>
-    <body>
-        <script type="text/javascript">
         /*
-        Use D3 (not dimple.js) to load the TSV file
-        and pass the contents of it to the draw function
-        */
-        d3.csv("data/airline_delay_causes.csv", draw);
-        </script>
-    </body>
+          D3.js setup code
+          */
+
+        "use strict";
+        var margin = 75,
+        width = 1000 - margin,
+        height = 600 - margin;
+
+        d3.select("body")
+          .append("h2")
+          .text("Airline on-time performance");
+
+        var svg = d3.select("body")
+          .append("svg")
+            .attr("width", width + margin)
+            .attr("height", height + margin)
+          .append('g')
+            .attr('class','chart');
+
+        /*
+          Dimple.js Chart construction code
+          */
+
+        var myChart = new dimple.chart(svg, data);
+        var x = myChart.addTimeAxis("x", "year", "%Y", "%Y");
+        myChart.addMeasureAxis("y", "on_time");
+        myChart.addSeries("carrier_name", dimple.plot.line);
+        myChart.addSeries("carrier_name", dimple.plot.scatter);
+        myChart.addLegend(width - 200, height - 100, 200, 100, "right");
+        myChart.draw();
+      };
+    </script>
+  </head>
+  <body>
+      <script type="text/javascript">
+      /*
+      Use D3 (not dimple.js) to load the TSV file
+      and pass the contents of it to the draw function
+      */
+      d3.csv("data/airline_ontime_performace.csv", draw);
+      </script>
+  </body>
 </html>
