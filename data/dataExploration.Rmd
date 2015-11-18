@@ -154,6 +154,9 @@ drops <- c("flights", "delayed", "cancelled", "diverted")
 df_tmp2 <- df_tmp2[, !(names(df_tmp2) %in% drops)]
 
 df_final <- rbind(df_tmp2, df_tmp)
+
+# unit percent
+df_final$on_time <- df_final$on_time * 100
 ```
 
 ### top3 airline and average on-time performance over year
