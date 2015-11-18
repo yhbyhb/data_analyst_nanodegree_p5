@@ -38,10 +38,19 @@
 
         var myChart = new dimple.chart(svg, data);
         var x = myChart.addTimeAxis("x", "year", "%Y", "%Y");
-        myChart.addMeasureAxis("y", "on_time");
-        myChart.addSeries("carrier_name", dimple.plot.line);
-        myChart.addSeries("carrier_name", dimple.plot.scatter);
-        myChart.addLegend(width - 200, height - 100, 200, 100, "right");
+        x.title = "Year"
+
+        var y = myChart.addMeasureAxis("y", "on_time");
+        y.tickFormat = "%"
+        y.title = "Arrived on-time (%)"
+        y.overrideMin = 0.7
+        y.overrideMax = 0.9
+
+        var myLine = myChart.addSeries("carrier_name", dimple.plot.line);
+        var myScatter = myChart.addSeries("carrier_name", dimple.plot.scatter);
+        var myLegend = myChart.addLegend(width * 0.75, height - 50, 200, 100, "right");
+        // debugger;
+
         myChart.draw();
       };
     </script>
