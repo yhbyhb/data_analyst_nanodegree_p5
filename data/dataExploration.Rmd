@@ -1,5 +1,5 @@
 ---
-title: "Exploration of Airline On-Time data, 2003 ~ 2015"
+title: "Exploration of Airline on-time arrival and delay data, 2003 ~ 2015"
 author: "HanByul Yang"
 date: "November 17, 2015"
 output: html_document
@@ -83,9 +83,9 @@ df_percent <- df_percent[, !(names(df_percent) %in% drops)]
 df_p_long<-melt(df_percent, id.vars="date")
 ```
 
-### on-time performance over year
-```{r}
-ggplot(df_p_long, aes(date,value,linetype=variable)) +
+### on-time arrival performance over year
+```{r on_time_performance_monthly}
+ggplot(df_p_long, aes(date, value, color=variable)) +
   geom_line()
 ```
 
@@ -110,15 +110,14 @@ df_year_p <- df_year_p[, !(names(df_year_p) %in% drops)]
 df_year_p_long<-melt(df_year_p, id.vars="year")
 ```
 
-### on-time performance over year 2
-```{r}
+### on-time arrival performance over year 2
+```{r on_time_performance_yearly}
 ggplot(df_year_p_long, aes(year,value,color=variable)) +
   geom_line() +
-  # geom_point() +
-  theme_economist() +
-  scale_colour_economist()
+  geom_point()
 ```
 
+### top 3 airlines for flights per month
 ```{r}
 df_carrier_year <- df_no_NAs %>%
   group_by(year, carrier_name) %>%
@@ -137,27 +136,35 @@ df_carriers <- df_carrier_year %>%
   arrange(desc(flights))
 
 # top 3
+head(df_carriers, 3)
+summary(df_carriers)
 top3_carriers <- df_carriers[1:3,]$carrier_name
-top3_carriers
 df_top3_carrier <- subset(df_carrier_year, is.element(carrier_name, top3_carriers))
 ```
 
-```{r}
+### final data set
+```{r final_dataset}
 df_tmp <- df_year_p
 drops <- c("delayed", "cancelled", "diverted")
 df_tmp <- df_tmp[, !(names(df_tmp) %in% drops)]
 
-df_tmp[,"carrier_name"] <- "Average"
+df_tmp[,"carrier_name"] <- "Overall"
 
 df_tmp2 <-df_top3_carrier
 drops <- c("flights", "delayed", "cancelled", "diverted")
 df_tmp2 <- df_tmp2[, !(names(df_tmp2) %in% drops)]
 
 df_final <- rbind(df_tmp2, df_tmp)
+df_final2 <- dcast(df_final, year ~ carrier_name)
 ```
 
-### top3 airline and average on-time performance over year
-```{r top3_plus_average}
+```{r final_dataset2}
+df_final2
+```
+
+
+### top3 airlines and overall on-time arrival performance over year
+```{r top3_airlines_and_overall, fig.width=8.5, fig.height=5}
 ggplot(df_final, aes(year, on_time, color=carrier_name)) +
   geom_line() +
   geom_point() +
