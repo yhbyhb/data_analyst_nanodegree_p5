@@ -46,10 +46,12 @@ Removing NAs. Formatting "date".
 ```{r data_wrangling}
 df$date <- as.Date(paste(df$year, df$month, "01", sep="-"), format="%Y-%m-%d")
 df_no_NAs <- df[complete.cases(df),]
-dim(df)
+dim(df_no_NAs)
 summary(df_no_NAs)
 ```
-There are no NAs in dataset.
+
+204259 records in cleaned dataset. (347 records have some missing values)
+
 ```{r make_new_dataFrame}
 df_sum <- df_no_NAs  %>%
   group_by(date, year) %>%
