@@ -1,0 +1,53 @@
+"year","carrier_name","on_time"
+2003,"American Airlines Inc.",0.81192849436517
+2003,"Delta Air Lines Inc.",0.823084031590473
+2003,"Southwest Airlines Co.",0.869102057137779
+2004,"American Airlines Inc.",0.787917222581698
+2004,"Delta Air Lines Inc.",0.779037807683694
+2004,"Southwest Airlines Co.",0.812606774609149
+2005,"American Airlines Inc.",0.785635918517628
+2005,"Delta Air Lines Inc.",0.79173996129436
+2005,"Southwest Airlines Co.",0.817477997826326
+2006,"American Airlines Inc.",0.773828964398529
+2006,"Delta Air Lines Inc.",0.780369344340685
+2006,"Southwest Airlines Co.",0.812068540489993
+2007,"American Airlines Inc.",0.718976046647746
+2007,"Delta Air Lines Inc.",0.7848153666086
+2007,"Southwest Airlines Co.",0.811406904611373
+2008,"American Airlines Inc.",0.73048672222562
+2008,"Delta Air Lines Inc.",0.78129404710011
+2008,"Southwest Airlines Co.",0.817136452219007
+2009,"American Airlines Inc.",0.792255940478284
+2009,"Delta Air Lines Inc.",0.799190200160278
+2009,"Southwest Airlines Co.",0.839272687449549
+2010,"American Airlines Inc.",0.816793385129852
+2010,"Delta Air Lines Inc.",0.79613818808904
+2010,"Southwest Airlines Co.",0.806833693942215
+2011,"American Airlines Inc.",0.806796623428265
+2011,"Delta Air Lines Inc.",0.838814688986264
+2011,"Southwest Airlines Co.",0.825741076751488
+2012,"American Airlines Inc.",0.791036137237729
+2012,"Delta Air Lines Inc.",0.872290986532834
+2012,"Southwest Airlines Co.",0.84132972683872
+2013,"American Airlines Inc.",0.79760769375208
+2013,"Delta Air Lines Inc.",0.850057641088158
+2013,"Southwest Airlines Co.",0.776295122330866
+2014,"American Airlines Inc.",0.777289068006703
+2014,"Delta Air Lines Inc.",0.846960487271591
+2014,"Southwest Airlines Co.",0.745339182536162
+2015,"American Airlines Inc.",0.810583208398811
+2015,"Delta Air Lines Inc.",0.858007002686087
+2015,"Southwest Airlines Co.",0.805204595387273
+2003,"Average",0.828614879508821
+2004,"Average",0.800626010797739
+2005,"Average",0.794685877017251
+2006,"Average",0.773795205268274
+2007,"Average",0.758025865077638
+2008,"Average",0.782482318088662
+2009,"Average",0.811126309420104
+2010,"Average",0.817850520045475
+2011,"Average",0.817613531415831
+2012,"Average",0.833492270159144
+2013,"Average",0.800725208223402
+2014,"Average",0.786843900402247
+2015,"Average",0.809377044993855
