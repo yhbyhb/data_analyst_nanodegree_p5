@@ -60,21 +60,26 @@ The following chart is initial chart. It also can be found at `index-initial.htm
 ![initial chart](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-initial.png)
 
 #### Final chart (after feedbacks) ####
+I had 3 feedbacks from friends. Followings are changes from initial chart.
+- I refined title of chart for showing the purpose of chart clearly.
+- 
 
 ## Feedback ##
+
 ### Feedback 1 ###
-what "average" mean?  average of top3?
-"on-time performance" ??
+- what does "average" mean? average of top3?
+- what is "on-time performance"?
+
 ### Feedback 2 ###
-hard to compare each line
-range of y axis makes confuse
-hovering tooltip looks good but no additional information.
+- It is hard to compare each line.
+- Range of y axis makes confuse. (min of y-axis 70%)
+- hovering tooltip looks good but no additional information.
+
 ### Feedback 3 ###
-강조하고 싶은것이 있으면 더 좋겠다
-목적이 좀 더 분명히 잘 보이면 좋겠다. 
-70% 부터 있어서 잘 안보임. 
-왜 세개? 오버올이 다른것들의 평균인줄알았음
-최악의 항공사는?
+- What is main purpose of this chart?
+- Min value of y-axis make me confused.
+- Why don't you show the worst performance airline?
+- What about plot all 28 airlines?
 
 ## Resources ##
 - dimple examples, docs

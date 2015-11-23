@@ -15,7 +15,7 @@
         var titleText = "Top 5 U.S. Airlines on-time arrival performance"
         d3.select("body")
           .append("h2")
-          .text(titleText);
+            .text(titleText);
 
         /*
           D3.js setup code
@@ -54,8 +54,8 @@
         var myScatter = myChart.addSeries("carrier_name", dimple.plot.scatter);
 
         // adding legend
-        var legendXPos= width * 0.8
-        var legendYPos = height - 100
+        var legendXPos= width * 0.83
+        var legendYPos = height - 250
         var myLegend = myChart.addLegend(legendXPos, legendYPos, 200, 100);
 
         myChart.draw();
@@ -113,6 +113,18 @@
             // it there is no transition
             myChart.draw(800);
           });
+
+        //for footer note
+        svg.selectAll("title_text")
+            .data(["A flight is considered delayed when it arrived 15 or more minutes than the schedule."])
+            .enter()
+            .append("text")
+              .attr("x", width - 370)
+              .attr("y", function (d, i) { return height + i * 10; })
+              .style("font-family", "sans-serif")
+              .style("font-size", "9px")
+              .style("color", "Black")
+              .text(function (d) { return d; });
       };
     </script>
   </head>
