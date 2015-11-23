@@ -11,6 +11,11 @@
 
     <script type="text/javascript">
       function draw(data) {
+        // for Title
+        var titleText = "Top 5 U.S. Airlines on-time arrival performance"
+        d3.select("body")
+          .append("h2")
+          .text(titleText);
 
         /*
           D3.js setup code
@@ -20,10 +25,6 @@
         var margin = 75,
         width = 1000 - margin,
         height = 600 - margin;
-
-        d3.select("body")
-          .append("h2")
-          .text("Airline on-time performance");
 
         var svg = d3.select("body")
           .append("svg")
@@ -36,23 +37,30 @@
           Dimple.js Chart construction code
           */
 
+        // configuration of x-axis
         var myChart = new dimple.chart(svg, data);
         var x = myChart.addTimeAxis("x", "year", "%Y", "%Y");
         x.title = "Year"
 
+        // configuration of y-axis
         var y = myChart.addMeasureAxis("y", "on_time");
         y.tickFormat = "%"
         y.title = "Arrived on-time (%)"
-        y.overrideMin = 0.7
-        y.overrideMax = 0.9
+        y.overrideMin = 0.0
+        y.overrideMax = 1.0
 
+        // adding line and scatter chart
         var myLine = myChart.addSeries("carrier_name", dimple.plot.line);
         var myScatter = myChart.addSeries("carrier_name", dimple.plot.scatter);
-        var myLegend = myChart.addLegend(width * 0.75, height - 50, 200, 100);
-        // debugger;
+
+        // adding legend
+        var legendXPos= width * 0.8
+        var legendYPos = height - 100
+        var myLegend = myChart.addLegend(legendXPos, legendYPos, 200, 100);
 
         myChart.draw();
 
+        // adding interaction to legend.
         // This is a critical step.  By doing this we orphan the legend. This
         // means it will not respond to graph updates.  Without this the legend
         // will redraw when the chart refreshes removing the unchecked item and
@@ -66,8 +74,8 @@
           .data(["Click legend to","show/hide carrier:"])
           .enter()
           .append("text")
-            .attr("x", width * 0.75)
-            .attr("y", function (d, i) { return height - 70 + i * 12; })
+            .attr("x", legendXPos)
+            .attr("y", function (d, i) { return legendYPos - 20 + i * 12; })
             .style("font-family", "sans-serif")
             .style("font-size", "10px")
             .style("color", "Black")
