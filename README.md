@@ -72,10 +72,10 @@ Followings are changes from initial chart.
 Refining the chart is iterated to show trends of on-time arrival performance. I intened to give an helpful information when choosing airlines.
 
 Below is a screenshot of my final visualizations.
-![initial chart](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-final.png)
+![final chart](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-final.png)
 
 ## Feedback ##
-I had 3 feedbacks from my friends who are not familiar with dataset. In case of feedback 1 and 2, I showed the chart without any explanations firstly and explained the chart and dataset after several minutes.
+I had 3 feedbacks from my friends who are not familiar with dataset. In case of feedback 1 and 2, I showed the chart without any explanations firstly and explained the chart and dataset after several minutes. On the other hand, feedback 3 is taken by providing both chart and explanation.
 
 ### Feedback 1 ###
 - what does "average" mean? average of top3?
