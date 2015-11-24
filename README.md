@@ -77,7 +77,7 @@ I had 3 feedbacks from my friends who are not familiar with dataset. In case of 
 - Hovering tooltip looks good but no additional information.
 
 ## Resources ##
-- [dimple.js](http://dimplejs.org/) examples, docs
+- [dimple.js](http://dimplejs.org/) examples, documentss
     - [Interactive Legend](http://dimplejs.org/advanced_examples_viewer.html?id=advanced_interactive_legends)
-- [d3.js](http://d3js.org/) doc
+- [d3.js](http://d3js.org/) documents
 - course materials
