@@ -52,8 +52,8 @@ Year | American Airlines Inc. | Delta Air Lines Inc. | ExpressJet Airlines Inc. 
 
 ### Data Visualization ###
 **dimple.js** is mainly used for making chart. **D3.js** also used.
-I used line chart with scatter plot that indicates individual data points. Line chart is the best method to show changing values in time. Scatter plot emphasizes data points at each year. Each airlines performance is distinguished by coloring each line and points series.
-The legend is placed bottom-right conrnor of the chart. X-axis is in range from 2003 to 2015 and formatted with Year. Percentile is used for unit of y-axis. Although I worried about lie factor by not setting min y value to 0, The range of y-axis is decided with min value 0.7 and max value 0.9 in order to maximize the differences among airlines performace.
+I used line chart with scatter plot that indicates individual data points. Line chart is the best method to show changing values in time. Scatter plot emphasizes data points at each year. Each performance of airline is distinguished by coloring each line and point series.
+The legend is placed at bottom-right conrnor of the chart. X-axis is in range from 2003 to 2015 and formatted with Year. Percentile that represent on-time performance is used for unit of y-axis. Although I worried about lie factor by not setting min y value to 0, The range of y-axis is decided with min value 0.7 and max value 0.9 in order to maximize the differences among airlines performace.
 
 The following chart is initial chart. It also can be found at `index-initial.html`.
 
@@ -63,16 +63,16 @@ The following chart is initial chart. It also can be found at `index-initial.htm
 Followings are changes from initial chart.
 - Refined title for showing the purpose of chart clearly.
 - Added a label for explanation of delayed flight at bottom of the chart.
-- Added click interaction on legend to show and hide each airlines graph.
+- Added click interaction on legend to show and hide each airline graph.
 - Changed color of overall graph to grey for differentiating to other graph.
+- Refined "Average" legend to "Overall (all 28 airlines)" for clear understanding.
 - Changed position of legend from bottom of chart to near the lines.
 - Changed range of y-axis to show 0 ~ 100% to remove lie factor.
 
 Refining the chart is iterated to show trends of on-time arrival performance. I intened to give an helpful information when choosing airlines.
 
 Below is a screenshot of my final visualizations.
-![initial chart](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-fianl.png)
-
+![initial chart](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-final.png)
 
 ## Feedback ##
 I had 3 feedbacks from my friends who are not familiar with dataset. In case of feedback 1 and 2, I showed the chart without any explanations firstly and explained the chart and dataset after several minutes.
