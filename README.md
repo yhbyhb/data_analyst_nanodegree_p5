@@ -3,7 +3,7 @@ Make Effective Data Visualization: Airline On-time Arrival Performance
 by HanByul Yang, November 18, 2015
 
 ## Summary ##
-This charts shows on-time arrival performance of top 5 U.S. airlines for domestic flights and overall airline from 2003 to 2015. Top 5 airline cover over half of all flights. A flight is considered delayed when it arrived 15 or more minutes than the schedule. On-time performance changes smaller in the vicinity of 80%.
+This charts shows on-time arrival performance of top 5 U.S. airlines for domestic flights and overall airline from 2003 to 2015. Top 5 airline cover over half of all flights. A flight is considered delayed when it arrived 15 or more minutes than the schedule. On-time performance changes small in the vicinity of 80%.
 
 ## Design ##
 ### Data Exploration ###
