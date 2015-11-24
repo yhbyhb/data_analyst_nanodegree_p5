@@ -27,28 +27,10 @@ There are 28 airlines in the datasets. I assumed there are some dominant airline
 |5 | ExpressJet Airlines Inc. |  457366.9 |  5945770 | 42197633 | 0.5187159
 |  | Overall                  |  281947.3 |  2905363 |          |
 
-When releasing initial chart, I used top 3 airlines results with no rational reason. There was some feedback point out "Why top 3 airelines?". With more data exploration, As above table, top 5 airlines covers half of all flights from 2003 to 2015. I decided to shows on-time performace trend of top 5 airlines with overall(28 airlines) on-time performance. It shows most of airlines performed poorly in 2007 and have pick in 2012. 
+When I drew initial chart, I used top 3 airlines results with no rational reason. There was some feedback point out "Why top 3 airelines?". With more data exploration, As above table, top 5 airlines covers half of all flights from 2003 to 2015. So I decided to shows on-time performace trend of top 5 airlines with overall(28 airlines) on-time performance. It shows most of airlines performed poorly in 2007 and have pick in 2012. 
 
 **On-time performance of top 5 airelines**
-![initial plot with R](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/top5_airlines_and_overall-1.png)
-
-<!-- **On-time arrival performance**
-
-Year | American Airlines Inc. | Delta Air Lines Inc. | ExpressJet Airlines Inc. | SkyWest Airlines Inc. | Southwest Airlines Co. | Overall (all 28 airlines)
----|---:|---:|---:|---:|---:|---:
-2003 | 0.8119 | 0.8231 | 0.8062 | 0.8898 | 0.8691 | 0.8286
-2004 | 0.7879 | 0.7790 | 0.7888 | 0.8498 | 0.8126 | 0.8006
-2005 | 0.7856 | 0.7917 | 0.7804 | 0.8448 | 0.8175 | 0.7947
-2006 | 0.7738 | 0.7804 | 0.7592 | 0.7925 | 0.8121 | 0.7738
-2007 | 0.7190 | 0.7848 | 0.7664 | 0.7819 | 0.8114 | 0.7580
-2008 | 0.7305 | 0.7813 | 0.7653 | 0.8144 | 0.8171 | 0.7825
-2009 | 0.7923 | 0.7992 | 0.8083 | 0.8378 | 0.8393 | 0.8111
-2010 | 0.8168 | 0.7961 | 0.8015 | 0.8133 | 0.8068 | 0.8179
-2011 | 0.8068 | 0.8388 | 0.7839 | 0.8175 | 0.8257 | 0.8176
-2012 | 0.7910 | 0.8723 | 0.7920 | 0.8361 | 0.8413 | 0.8335
-2013 | 0.7976 | 0.8501 | 0.7589 | 0.8214 | 0.7763 | 0.8007
-2014 | 0.7773 | 0.8470 | 0.7603 | 0.7961 | 0.7453 | 0.7868
-2015 | 0.8106 | 0.8580 | 0.8023 | 0.8162 | 0.8052 | 0.8094 -->
+![initial R plot](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/top5_airlines_and_overall-1.png)
 
 ### Data Visualization ###
 **dimple.js** is mainly used for making chart. **D3.js** also used.
@@ -69,9 +51,9 @@ Followings are changes from initial chart.
 - Changed position of legend from bottom of chart to near the lines.
 - Changed range of y-axis to show 0 ~ 100% to remove lie factor.
 
-Refining the chart is iterated to show trends of on-time arrival performance. I intened to give an helpful information when choosing airlines.
+Some feedbacks were not used for refining chart. I didn't use all 28 airlines data. Because it didn't give any information but confusion. Also I didn't use worst on-time performance airline data. I think It is enoungh to show top 5 airlines performances that covers 50% of all flights. I didn't give any additional information to hovering tooltip because I'd like to give only values of x and y-axis. To give additional info may disturb on main purpose of chart.
 
-Below is a screenshot of my final visualizations.
+I intened to find trend of on-time arrival performance for helping on choice of airline. Below is a screenshot of my final visualization.
 ![final chart](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-final.png)
 
 ## Feedback ##
@@ -84,14 +66,15 @@ I had 3 feedbacks from my friends who are not familiar with dataset. In case of 
 
 ### Feedback 2 ###
 - What is main purpose of this chart?
+- Why did you choose top 3 airlines?
 - Min value of y-axis make me confused.
 - Why don't you show the worst performance airline?
 - What about plot all 28 airlines?
 
 ### Feedback 3 ###
-- It is hard to compare each line.
+- Hard to compare each line.
 - Range of y axis makes confuse. (min of y-axis 70%)
-- hovering tooltip looks good but no additional information.
+- Hovering tooltip looks good but no additional information.
 
 ## Resources ##
 - [dimple.js](http://dimplejs.org/) examples, docs
