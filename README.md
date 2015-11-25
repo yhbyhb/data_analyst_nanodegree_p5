@@ -1,9 +1,9 @@
 Make Effective Data Visualization: Airline On-time Arrival Performance
 ========================================================
-by HanByul Yang, November 24, 2015
+by HanByul Yang, November 25, 2015
 
 ## Summary ##
-This chart shows the growth of on-time arrival performance "Delta Air Lines Inc" by comparision with top U.S. airlines for domestic flights from 2003 to 2015. Top 5 airlines cover over half of all flights. A flight is considered delayed when it arrived 15 or more minutes than the schedule.
+This chart shows the growth of on-time arrival performance "Delta Air Lines Inc" by comparision with top U.S. airlines for domestic flights from 2003 to 2015. Top 5 airlines cover about half of all flights. A flight is considered delayed when it arrived 15 or more minutes than the schedule.
 
 ## Design ##
 ### Data Exploration ###
@@ -26,7 +26,7 @@ There are 28 airlines in the datasets. I assumed there are some dominant airline
 |4 |        SkyWest Airlines Inc. | 46600.38 |  5452244 | 33607055 | 0.4550515
 |5 |        United Air Lines Inc. | 38549.82 |  5242775 | 38849830 | 0.5260405
 
-When I drew initial chart, I used top 3 airlines results with no rational reason. There was some feedback point out "Why top 3 airelines?". With more data exploration, As above table, top 5 airlines covers half of all flights from 2003 to 2015. In addition, It is same result of [wikipedia](https://en.wikipedia.org/wiki/List_of_largest_airlines_in_North_America) (Rank 1~4 + regional airlines rank 1).
+When I drew initial chart, I used top 3 airlines results with no rational reason. There was some feedback point out "Why top 3 airelines?". With more data exploration, As above table, top 5 airlines covers half of all flights from 2003 to 2015. In addition, It is same result from [wikipedia (List of largest airlines in North America)](https://en.wikipedia.org/wiki/List_of_largest_airlines_in_North_America) (Rank 1~4 + regional airlines rank 1).
 
 The initial chart shows most of airlines performed poorly in 2007 and have pick in 2012. 
 
@@ -43,15 +43,15 @@ The following chart is initial chart. It also can be found at `index-initial.htm
 ![initial chart](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-initial.png)
 
 #### Final chart (after feedbacks) ####
-Feedback that there is no story or main puropose was crucial to chart. One suggestion was emphasizing the growth of Perfomnce of "Delta Air Lines Inc.". Delta was worse perfomance at left side of chart and now It performs the best among the chart. I refined the chart in order to express the story.
+Feedback that there is no story or main puropose was crucial. One suggestion was emphasizing the growth of Perfomnce of "Delta Air Lines Inc.". Delta was worse perfomance at left side of chart but Since 2011, It performs the best among the top 5 airlines. I refined the chart in order to express that story.
 
 Followings are changes from initial chart.
 - Refined title for showing the purpose of chart clearly.
-- Added a label for explanation of delayed flight at bottom of the chart.
+- Added labels for explanations of delayed flight and choice of top 5 airlines at bottom of the chart.
 - Added click interaction on legend to show and hide each airline graph.
-- Refined "Average" legend to "Overall (all 28 airlines)" for clear understanding.
+- Removed "Average" from chart. It is unhelpful information to chart.
 - Changed position of legend from bottom of chart to near the lines.
-- Changed range of y-axis to show 55 ~ 100%.
+- Changed range of y-axis from 70 ~ 90 % to 50 ~ 100% to avoid exaggeration.
 - Changed color of series gray tones except "Delta Air Lines Inc.".
 
 Some feedbacks were not used for refining chart. I didn't use all 28 airlines data. Because it didn't give any information but confusion. Also I didn't use worst on-time performance airline data. I think It is enoungh to show top 5 airlines performances that covers 50% of all flights. I didn't give any additional information to hovering tooltip because I'd like to give only values of x and y-axis. To give additional info may disturb on main purpose of chart.

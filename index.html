@@ -46,7 +46,7 @@
         var y = myChart.addMeasureAxis("y", "on_time");
         y.tickFormat = "%"
         y.title = "Arrived on-time (%)"
-        y.overrideMin = 0.55
+        y.overrideMin = 0.5
         y.overrideMax = 1.0
 
         // adding line and scatter chart
@@ -58,9 +58,8 @@
         var legendYPos = height - 120
         var myLegend = myChart.addLegend(legendXPos, legendYPos, 200, 100);
 
-        // changing color of overall to grey excetp "Delta Air Lines Inc."
+        // changing color of overall to grey except "Delta Air Lines Inc."
         myChart.defaultColors = [
-            // new dimple.color("#666666"),
             new dimple.color("#888888"),
             new dimple.color("#AAAAAA"),
             new dimple.color("#CCCCCC"),
@@ -128,11 +127,14 @@
 
         //adding foot note
         svg.selectAll("title_text")
-            .data(["A flight is considered delayed when it arrived 15 or more minutes than the schedule."])
+            .data([
+                  "* A flight is considered delayed when it arrived 15 or more minutes than the schedule.",
+                  "* Top 5 airlines above covers about half of all flights from 2003 to 2015"
+                  ])
             .enter()
             .append("text")
-              .attr("x", width - 370)
-              .attr("y", function (d, i) { return height + i * 10; })
+              .attr("x", width - 380)
+              .attr("y", function (d, i) { return height - 10 + i * 14; })
               .style("font-family", "sans-serif")
               .style("font-size", "9px")
               .style("color", "Black")
