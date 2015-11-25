@@ -43,7 +43,7 @@ The following chart is initial chart. It also can be found at `index-initial.htm
 ![initial chart](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-initial.png)
 
 #### Final chart (after feedbacks) ####
-Feedback that there is no story or main puropose was crucial. One suggestion was emphasizing the growth of Perfomnce of "Delta Air Lines Inc.". Delta was worse perfomance at left side of chart but Since 2011, It performs the best among the top 5 airlines. I refined the chart in order to express that story.
+Feedback that there is no story or main puropose was crucial. One suggestion was emphasizing the growth of perfomnce of "Delta Air Lines Inc.". Delta was worse perfomance at left side of chart but since 2011, It performs the best among the top 5 airlines. I refined the chart in order to express that story.
 
 Followings are changes from initial chart.
 - Refined title for showing the purpose of chart clearly.
