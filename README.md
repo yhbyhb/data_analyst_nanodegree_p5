@@ -3,7 +3,7 @@ Make Effective Data Visualization: Airline On-time Arrival Performance
 by HanByul Yang, November 24, 2015
 
 ## Summary ##
-This charts shows on-time arrival performance of top 5 U.S. airlines for domestic flights and overall airline from 2003 to 2015. Top 5 airline cover over half of all flights. A flight is considered delayed when it arrived 15 or more minutes than the schedule. On-time performance changes small in the vicinity of 80%.
+This chart shows the growth of on-time arrival performance "Delta Air Lines Inc" by comparision with top U.S. airlines for domestic flights from 2003 to 2015. Top 5 airlines cover over half of all flights. A flight is considered delayed when it arrived 15 or more minutes than the schedule.
 
 ## Design ##
 ### Data Exploration ###
@@ -20,14 +20,15 @@ There are 28 airlines in the datasets. I assumed there are some dominant airline
 
 |  | Carrier name | flights / month | flights | cumulative flights | relative cumulative flights
 |---:|---|---:|---:|---:|---:
-|1 |   Southwest Airlines Co. | 1066402.4 | 13863231 | 13863231 | 0.1704143
-|2 |     Delta Air Lines Inc. |  615297.0 |  7998861 | 21862092 | 0.2687406
-|3 |   American Airlines Inc. |  570689.9 |  7418969 | 29281061 | 0.3599385
-|4 |    SkyWest Airlines Inc. |  536215.5 |  6970802 | 36251863 | 0.4456273
-|5 | ExpressJet Airlines Inc. |  457366.9 |  5945770 | 42197633 | 0.5187159
-|  | Overall                  |  281947.3 |  2905363 |          |
+|1 |       Southwest Airlines Co. | 93670.48 | 13863231 | 13863231 | 0.1877131
+|2 |       American Airlines Inc. | 50099.31 |  7164202 | 21027433 | 0.2847189
+|3 |         Delta Air Lines Inc. | 53589.31 |  7127378 | 28154811 | 0.3812262
+|4 |        SkyWest Airlines Inc. | 46600.38 |  5452244 | 33607055 | 0.4550515
+|5 |        United Air Lines Inc. | 38549.82 |  5242775 | 38849830 | 0.5260405
 
-When I drew initial chart, I used top 3 airlines results with no rational reason. There was some feedback point out "Why top 3 airelines?". With more data exploration, As above table, top 5 airlines covers half of all flights from 2003 to 2015. So I decided to shows on-time performace trend of top 5 airlines with overall(28 airlines) on-time performance. It shows most of airlines performed poorly in 2007 and have pick in 2012. 
+When I drew initial chart, I used top 3 airlines results with no rational reason. There was some feedback point out "Why top 3 airelines?". With more data exploration, As above table, top 5 airlines covers half of all flights from 2003 to 2015. In addition, It is same result of [wikipedia](https://en.wikipedia.org/wiki/List_of_largest_airlines_in_North_America) (Rank 1~4 + regional airlines rank 1).
+
+The initial chart shows most of airlines performed poorly in 2007 and have pick in 2012. 
 
 **On-time performance of top 5 airelines**
 ![initial R plot](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/top5_airlines_and_overall-1.png)
@@ -42,18 +43,19 @@ The following chart is initial chart. It also can be found at `index-initial.htm
 ![initial chart](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-initial.png)
 
 #### Final chart (after feedbacks) ####
+Feedback that there is no story or main puropose was crucial to chart. One suggestion was emphasizing the growth of Perfomnce of "Delta Air Lines Inc.". Delta was worse perfomance at left side of chart and now It performs the best among the chart. I refined the chart in order to express the story.
+
 Followings are changes from initial chart.
 - Refined title for showing the purpose of chart clearly.
 - Added a label for explanation of delayed flight at bottom of the chart.
 - Added click interaction on legend to show and hide each airline graph.
-- Changed color of overall graph to grey for differentiating to other graph.
 - Refined "Average" legend to "Overall (all 28 airlines)" for clear understanding.
 - Changed position of legend from bottom of chart to near the lines.
-- Changed range of y-axis to show 0 ~ 100% to remove lie factor.
+- Changed range of y-axis to show 55 ~ 100%.
+- Changed color of series gray tones except "Delta Air Lines Inc.".
 
 Some feedbacks were not used for refining chart. I didn't use all 28 airlines data. Because it didn't give any information but confusion. Also I didn't use worst on-time performance airline data. I think It is enoungh to show top 5 airlines performances that covers 50% of all flights. I didn't give any additional information to hovering tooltip because I'd like to give only values of x and y-axis. To give additional info may disturb on main purpose of chart.
 
-I intened to find trend of on-time arrival performance for helping on choice of airline. Below is a screenshot of my final visualization.
 ![final chart](https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-final.png)
 
 ## Feedback ##
@@ -81,3 +83,5 @@ I had 3 feedbacks from my friends who are not familiar with dataset. In case of 
     - [Interactive Legend](http://dimplejs.org/advanced_examples_viewer.html?id=advanced_interactive_legends)
 - [d3.js](http://d3js.org/) documents
 - course materials
+- [List of largest airlines in North America](https://en.wikipedia.org/wiki/List_of_largest_airlines_in_North_America)
+- [exploratory vs explanatory analysis](http://www.storytellingwithdata.com/blog/2014/04/exploratory-vs-explanatory-analysis)

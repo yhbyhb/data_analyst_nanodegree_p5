@@ -41,18 +41,12 @@ summary(df)
 ```
 204606 records dataset.
 
-### Data wrangling
-Removing NAs. Formatting "date".
 ```{r data_wrangling}
 df$date <- as.Date(paste(df$year, df$month, "01", sep="-"), format="%Y-%m-%d")
-df_no_NAs <- df[complete.cases(df),]
-dim(df_no_NAs)
-summary(df_no_NAs)
 ```
 
-204259 records in cleaned dataset. (347 records have some missing values)
-
 ```{r make_new_dataFrame}
+df_no_NAs <- df[complete.cases(df),]
 df_sum <- df_no_NAs  %>%
   group_by(date, year) %>%
   summarise(
@@ -102,7 +96,7 @@ df_year <- df_no_NAs  %>%
     cancelled = sum(arr_cancelled),
     diverted = sum(arr_diverted)
   )
-
+df_year <- df_year[complete.cases(df_year), ]
 df_year_p <- df_year
 df_year_p$delayed <- df_year$delayed / df_year$flights
 df_year_p$cancelled <- df_year$cancelled / df_year$flights
@@ -125,8 +119,8 @@ ggplot(df_year_p_long, aes(year,value,color=variable)) +
 
 ### Flights by carrier
 ```{r carriers}
-df_carrier_year <- df_no_NAs %>%
-  group_by(year, carrier_name) %>%
+df_carrier_month_raw <- df %>%
+  group_by(date, year, carrier_name) %>%
   summarise(
     flights = sum(arr_flights),
     delayed = sum(arr_del15),
@@ -135,7 +129,10 @@ df_carrier_year <- df_no_NAs %>%
   ) %>%
   transform(on_time = 1 - delayed/flights)
 
-df_carriers <- df_carrier_year %>%
+# remove NAs
+df_carrier_month <- df_carrier_month_raw[complete.cases(df_carrier_month_raw),]
+
+df_carriers <- df_carrier_month %>%
   group_by(carrier_name) %>%
   summarize(flights_avg = mean(flights),
             flights = sum(flights)) %>%
@@ -149,60 +146,36 @@ summary(df_carriers)
 total 28 carriers.
 
 ### Cumulative relative flights
-```{r}
+```{r Cumulative}
 # top 5
 cumflights = cumsum(df_carriers$flights)
 cumrelflights = cumflights/ cumflights[28]
 df_carriers$cumflights <- cumflights
 df_carriers$cumrelflights <- cumrelflights
+options(dplyr.width = Inf)
 head(df_carriers)
 top5_carriers <- df_carriers[1:5,]$carrier_name
-df_top5_carrier <- subset(df_carrier_year, is.element(carrier_name, top5_carriers))
+df_top5_carrier <- subset(df_carrier_month, is.element(carrier_name, top5_carriers)) %>%
+  group_by(year, carrier_name) %>%
+  summarize(flights = sum(flights),
+            delayed = sum(delayed),
+            cancelled = sum(cancelled),
+            diverted = sum(diverted)) %>%
+  transform(on_time = 1 - delayed/flights)
 ```
 top 5 covers over 50% of flights
 
-```{r cumulative_relative_frequency_distribution, fig.width=8.5}
-# # http://www.r-tutor.com/elementary-statistics/quantitative-data/cumulative-relative-frequency-distribution
-# 
-# blank_theme <- theme_minimal()+
-#   theme(
-#   axis.title.x = element_blank(),
-#   axis.title.y = element_blank(),
-#   panel.border = element_blank(),
-#   panel.grid=element_blank(),
-#   axis.ticks = element_blank(),
-#   plot.title=element_text(size=10, face="bold")
-#   )
-# 
-# bp <- ggplot(data=df_carriers, aes(x="", y=flights, fill=carrier_name)) +
-#   geom_bar(width = 1, stat = "identity")
-# pie <- bp + coord_polar("y", start=0)
-# pie + scale_fill_grey() +  blank_theme +
-#   theme(axis.text.x=element_blank()) +
-#   guides(fill=guide_legend(ncol=2)) +
-#   geom_text(aes(y = flights/3 + c(0, cumsum(flights)[-length(flights)]), 
-#             label = percent(flights/100)), size=5)
-```
-
 ### final data set
 ```{r final_dataset}
-df_tmp <- df_year_p
-drops <- c("delayed", "cancelled", "diverted")
-df_tmp <- df_tmp[, !(names(df_tmp) %in% drops)]
-
-df_tmp[,"carrier_name"] <- "Overall"
-
-df_tmp2 <-df_top5_carrier
 drops <- c("flights", "delayed", "cancelled", "diverted")
-df_tmp2 <- df_tmp2[, !(names(df_tmp2) %in% drops)]
+df_final <- df_top5_carrier[, !(names(df_top5_carrier) %in% drops)]
 
-df_final <- rbind(df_tmp2, df_tmp)
 df_final2 <- dcast(df_final, year ~ carrier_name)
 df_final2
 ```
 
-### Top5 airlines and overall on-time arrival performance over year
-```{r top5_airlines_and_overall, fig.width=8.5, fig.height=5}
+### Top5 airlines on-time arrival performance over year
+```{r top5_airlines_performance, fig.width=8.5, fig.height=5}
 ggplot(df_final, aes(year, on_time, color=carrier_name)) +
   geom_line() +
   geom_point() +

@@ -12,7 +12,7 @@
     <script type="text/javascript">
       function draw(data) {
         // adding title of chart to top center in the page
-        var titleText = "Top 5 U.S. Airlines on-time arrival performance"
+        var titleText = "Rise of Delta : on-time arrival performance of top U.S. domestic airlines"
         d3.select("body")
           .append("h2")
             .text(titleText);
@@ -46,7 +46,7 @@
         var y = myChart.addMeasureAxis("y", "on_time");
         y.tickFormat = "%"
         y.title = "Arrived on-time (%)"
-        y.overrideMin = 0.0
+        y.overrideMin = 0.55
         y.overrideMax = 1.0
 
         // adding line and scatter chart
@@ -55,11 +55,19 @@
 
         // adding legend
         var legendXPos= width * 0.83
-        var legendYPos = height - 250
+        var legendYPos = height - 120
         var myLegend = myChart.addLegend(legendXPos, legendYPos, 200, 100);
 
-        // changing color of overall to grey for making distinguishable to others
-        myChart.assignColor("Overall (all 28 airlines)", "grey", "grey", 0.8);
+        // changing color of overall to grey excetp "Delta Air Lines Inc."
+        myChart.defaultColors = [
+            // new dimple.color("#666666"),
+            new dimple.color("#888888"),
+            new dimple.color("#AAAAAA"),
+            new dimple.color("#CCCCCC"),
+            new dimple.color("#EEEEEE")
+        ];
+        var deltaColor = "rgb(244, 128, 36)"
+        myChart.assignColor("Delta Air Lines Inc.", deltaColor, deltaColor, 1.0);
 
         myChart.draw();
 
@@ -129,6 +137,7 @@
               .style("font-size", "9px")
               .style("color", "Black")
               .text(function (d) { return d; });
+
       };
     </script>
   </head>
