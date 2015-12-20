@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Data analyst Nanodegree p5 by yhbyhb</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Data analyst Nanodegree p5</h1>
+        <p>Udacity Data Analyst Nanodegree P5: Make Effective Data Visualization</p>
+
+        <p class="view"><a href="https://github.com/yhbyhb/data_analyst_nanodegree_p5">View the Project on GitHub <small>yhbyhb/data_analyst_nanodegree_p5</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/yhbyhb/data_analyst_nanodegree_p5/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/yhbyhb/data_analyst_nanodegree_p5/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/yhbyhb/data_analyst_nanodegree_p5">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="make-effective-data-visualization-airline-on-time-arrival-performance" class="anchor" href="#make-effective-data-visualization-airline-on-time-arrival-performance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make Effective Data Visualization: Airline On-time Arrival Performance</h1>
+
+<p>by HanByul Yang, November 25, 2015</p>
+
+<h2>
+<a id="summary" class="anchor" href="#summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary</h2>
+
+<p>This chart shows the growth of on-time arrival performance "Delta Air Lines Inc" by comparision with top U.S. airlines for domestic flights from 2003 to 2015. Top 5 airlines cover about half of all flights. A flight is considered delayed when it arrived 15 or more minutes than the schedule.</p>
+
+<h2>
+<a id="design" class="anchor" href="#design" aria-hidden="true"><span class="octicon octicon-link"></span></a>Design</h2>
+
+<h3>
+<a id="data-exploration" class="anchor" href="#data-exploration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Exploration</h3>
+
+<p>I selected the Flights <a href="http://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp">data set</a> which contains information on United State flight delays and performance. It comes from BTS(Bureau of Transportation Statistics) in OST-R(The Office of the Assistant Secretary for Research and Technology) which includes RITA(the Research and Innovative Technology Administration).</p>
+
+<p>Data exploration was done with R Studio. For the details, please check the <code>data\dataExploration.html</code> and <code>data\dataExploration.Rmd</code>. At First, I tried to visualize yearly averaged on-time performace trend which contains on-time, delayed, cancelled and diverted flights percentage. But It showed not enough interesting information to me.</p>
+
+<p><strong>On-time performance</strong>
+<img src="https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/on_time_performance_yearly-1.png" alt="average on-time performance"></p>
+
+<p>There are 28 airlines in the datasets. I assumed there are some dominant airlines that operate most of flights. After aggregating gross flights by airlines, sort them with descending orders. results are as following:</p>
+
+<p><strong>Top 5 Airline for domestic flights</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th>Carrier name</th>
+<th align="right">flights / month</th>
+<th align="right">flights</th>
+<th align="right">cumulative flights</th>
+<th align="right">relative cumulative flights</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">1</td>
+<td>Southwest Airlines Co.</td>
+<td align="right">93670.48</td>
+<td align="right">13863231</td>
+<td align="right">13863231</td>
+<td align="right">0.1877131</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td>American Airlines Inc.</td>
+<td align="right">50099.31</td>
+<td align="right">7164202</td>
+<td align="right">21027433</td>
+<td align="right">0.2847189</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td>Delta Air Lines Inc.</td>
+<td align="right">53589.31</td>
+<td align="right">7127378</td>
+<td align="right">28154811</td>
+<td align="right">0.3812262</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td>SkyWest Airlines Inc.</td>
+<td align="right">46600.38</td>
+<td align="right">5452244</td>
+<td align="right">33607055</td>
+<td align="right">0.4550515</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td>United Air Lines Inc.</td>
+<td align="right">38549.82</td>
+<td align="right">5242775</td>
+<td align="right">38849830</td>
+<td align="right">0.5260405</td>
+</tr>
+</tbody>
+</table>
+
+<p>When I drew initial chart, I used top 3 airlines results with no rational reason. There was some feedback point out "Why top 3 airelines?". With more data exploration, As above table, top 5 airlines covers half of all flights from 2003 to 2015. In addition, It is same result from <a href="https://en.wikipedia.org/wiki/List_of_largest_airlines_in_North_America">wikipedia (List of largest airlines in North America)</a> (Rank 1~4 + regional airlines rank 1).</p>
+
+<p>The initial chart shows most of airlines performed poorly in 2007 and have pick in 2012. </p>
+
+<p><strong>On-time performance of top 5 airelines</strong>
+<img src="https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/top5_airlines_and_overall-1.png" alt="initial R plot"></p>
+
+<h3>
+<a id="data-visualization" class="anchor" href="#data-visualization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Visualization</h3>
+
+<p><strong>dimple.js</strong> is mainly used for making chart. <strong>D3.js</strong> also used.
+I used line chart with scatter plot that indicates individual data points. Line chart is the best method to show changing values in time. Scatter plot emphasizes data points at each year. Each performance of airline is distinguished by coloring each line and point series.
+The legend is placed at bottom-right conrnor of the chart. X-axis is in range from 2003 to 2015 and formatted with Year. Percentile that represent on-time performance is used for unit of y-axis. Although I worried about lie factor by not setting min y value to 0, The range of y-axis is decided with min value 0.7 and max value 0.9 in order to maximize the differences among airlines performace.</p>
+
+<p>The following chart is initial chart. It also can be found at <code>index-initial.html</code>.</p>
+
+<p><img src="https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-initial.png" alt="initial chart"></p>
+
+<h4>
+<a id="final-chart-after-feedbacks" class="anchor" href="#final-chart-after-feedbacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Final chart (after feedbacks)</h4>
+
+<p>Feedback that there is no story or main puropose was crucial. One suggestion was emphasizing the growth of perfomnce of "Delta Air Lines Inc.". Delta was worse perfomance at left side of chart but since 2011, It performs the best among the top 5 airlines. I refined the chart in order to express that story.</p>
+
+<p>Followings are changes from initial chart.</p>
+
+<ul>
+<li>Refined title for showing the purpose of chart clearly.</li>
+<li>Added labels for explanations of delayed flight and choice of top 5 airlines at bottom of the chart.</li>
+<li>Added click interaction on legend to show and hide each airline graph.</li>
+<li>Removed "Average" from chart. It is unhelpful information to chart.</li>
+<li>Changed position of legend from bottom of chart to near the lines.</li>
+<li>Changed range of y-axis from 70 ~ 90 % to 50 ~ 100% to avoid exaggeration.</li>
+<li>Changed color of series gray tones except "Delta Air Lines Inc.".</li>
+</ul>
+
+<p>Some feedbacks were not used for refining chart. I didn't use all 28 airlines data. Because it didn't give any information but confusion. Also I didn't use worst on-time performance airline data. I think It is enoungh to show top 5 airlines performances that covers 50% of all flights. I didn't give any additional information to hovering tooltip because I'd like to give only values of x and y-axis. To give additional info may disturb on main purpose of chart.</p>
+
+<p><img src="https://raw.githubusercontent.com/yhbyhb/data_analyst_nanodegree_p5/master/data/figure/index-final.png" alt="final chart"></p>
+
+<h2>
+<a id="feedback" class="anchor" href="#feedback" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feedback</h2>
+
+<p>I had 3 feedbacks from my friends who are not familiar with dataset. In case of feedback 1 and 2, I showed the chart without any explanations firstly and explained the chart and dataset after several minutes. On the other hand, feedback 3 is taken by providing both chart and explanation.</p>
+
+<h3>
+<a id="feedback-1" class="anchor" href="#feedback-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feedback 1</h3>
+
+<ul>
+<li>what does "average" mean? average of top3?</li>
+<li>what is "on-time performance"?</li>
+<li>It seems most airlines have almost same on-time performace.</li>
+</ul>
+
+<h3>
+<a id="feedback-2" class="anchor" href="#feedback-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feedback 2</h3>
+
+<ul>
+<li>What is main purpose of this chart?</li>
+<li>Why did you choose top 3 airlines?</li>
+<li>Min value of y-axis make me confused.</li>
+<li>Why don't you show the worst performance airline?</li>
+<li>What about plot all 28 airlines?</li>
+</ul>
+
+<h3>
+<a id="feedback-3" class="anchor" href="#feedback-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feedback 3</h3>
+
+<ul>
+<li>Hard to compare each line.</li>
+<li>Range of y axis makes confuse. (min of y-axis 70%)</li>
+<li>Hovering tooltip looks good but no additional information.</li>
+</ul>
+
+<h2>
+<a id="resources" class="anchor" href="#resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources</h2>
+
+<ul>
+<li>
+<a href="http://dimplejs.org/">dimple.js</a> examples, documents
+
+<ul>
+<li><a href="http://dimplejs.org/advanced_examples_viewer.html?id=advanced_interactive_legends">Interactive Legend</a></li>
+</ul>
+</li>
+<li>
+<a href="http://d3js.org/">d3.js</a> documents</li>
+<li>course materials</li>
+<li><a href="https://en.wikipedia.org/wiki/List_of_largest_airlines_in_North_America">List of largest airlines in North America</a></li>
+<li><a href="http://www.storytellingwithdata.com/blog/2014/04/exploratory-vs-explanatory-analysis">exploratory vs explanatory analysis</a></li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/yhbyhb">yhbyhb</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
